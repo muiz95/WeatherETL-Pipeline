@@ -71,5 +71,5 @@ Open [http://<EC2_Public_IP>:8080](http://<EC2_Public_IP>:8080) in your browser.
 
 ## Trigger the DAG
 Find the `weather_etl_pipeline` and turn it on. You can manually trigger it or let it run based on its schedule.
-
+![Alt text](screenshot2.png)
 
