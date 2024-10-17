@@ -48,7 +48,7 @@ def transform_load_data(task_instance):
 
     now = datetime.now()
     dt_string = now.strftime("%d%m%Y%H%M%S")
-    dt_string = 'current_weather_data_portland_' + dt_string
+    dt_string = 'current_weather_data_vancouver_' + dt_string
     df_data.to_csv(f"s3://weatherapiairflowyoutubebucket-yml/{dt_string}.csv", index=False, storage_options=aws_credentials)
 
 
@@ -75,14 +75,14 @@ with DAG('weather_dag',
         is_weather_api_ready = HttpSensor(
         task_id ='is_weather_api_ready',
         http_conn_id='weathermap_api',
-        endpoint='/data/2.5/weather?q=Portland&APPID=5031cde3d1a8b9469fd47e998d7aef79'
+        endpoint='/data/2.5/weather?q=Vancouver&APPID=0e25cfdd424e92c2e32c490e85fea808'
         )
 
 
         extract_weather_data = SimpleHttpOperator(
         task_id = 'extract_weather_data',
         http_conn_id = 'weathermap_api',
-        endpoint='/data/2.5/weather?q=Portland&APPID=5031cde3d1a8b9469fd47e998d7aef79',
+        endpoint='/data/2.5/weather?q=Vancouver&APPID=0e25cfdd424e92c2e32c490e85fea808',
         method = 'GET',
         response_filter= lambda r: json.loads(r.text),
         log_response=True
