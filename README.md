@@ -14,7 +14,6 @@ The pipeline is structured as follows:
 1. **HTTP Sensor**: Checks if the OpenWeatherMap API is available.
 2. **HTTP Operator**: Extracts weather data from the API.
 3. **Python Operator**: Transforms and processes the data.
-4. **Load Operation**: (Optional) Loads the transformed data into an AWS S3 bucket.
 
 ## Technologies Used
 
